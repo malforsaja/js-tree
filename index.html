@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+  body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+  width: 100%;
+  position: relative
+}
+
+.searchTerm {
+  float: left;
+  width: 100%;
+  border: 3px solid #00B4CC;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.searchButton {
+  position: absolute;  
+  right: -50px;
+  width: 150px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+</style>
+  <title>Restaurant</title>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="search">
+      <input type="text" class="searchTerm" id="allergen" placeholder="Which ingredient is alergic to you?">
+      <button type="submit" class="searchButton" onclick="findAllergen()" name="search">
+        Find allergen
+      </button>
+    </div>
+  </div>
+  <div>
+    <ul id="items"></ul>
+  </div>
+</body>
+<script type="text/javascript" src="tree.js"></script>
+<script>
+
+  function findAllergen() {
+    let input = document.getElementById("allergen").value;
+    let data = tree._search(input);
+    data.forEach(element => {
+      console.log(element);
+      var li = document.createElement("li");
+      var text = document.createTextNode(element.value);
+      li.appendChild(text);
+      document.getElementById("items").appendChild(li);
+    });
+  }
+</script>
+
+</html>
