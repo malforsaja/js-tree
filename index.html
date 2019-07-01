@@ -70,7 +70,7 @@
 
   function findAllergen() {
     let input = document.getElementById("allergen").value;
-    let data = tree._search(input);
+    let data = tree.search(input);
     data.forEach(element => {
       console.log(element);
       var li = document.createElement("li");
